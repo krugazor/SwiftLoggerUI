@@ -14,6 +14,8 @@
 		2B5A92CB25331EBE0011F786 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B5A92C925331EBE0011F786 /* Main.storyboard */; };
 		2B5A92D625331F440011F786 /* SwiftLoggerRouter in Frameworks */ = {isa = PBXBuildFile; productRef = 2B5A92D525331F440011F786 /* SwiftLoggerRouter */; };
 		2B5A92D825331F440011F786 /* SwiftLoggerCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 2B5A92D725331F440011F786 /* SwiftLoggerCommon */; };
+		2B5A92DD253348B80011F786 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 2B5A92DC253348B80011F786 /* Introspect */; };
+		2B5A92E025334D320011F786 /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5A92DF25334D320011F786 /* LogCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,7 @@
 		2B5A92CA25331EBE0011F786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B5A92CC25331EBE0011F786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B5A92CD25331EBE0011F786 /* SwiftLoggerUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftLoggerUI.entitlements; sourceTree = "<group>"; };
+		2B5A92DF25334D320011F786 /* LogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +36,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B5A92D625331F440011F786 /* SwiftLoggerRouter in Frameworks */,
+				2B5A92DD253348B80011F786 /* Introspect in Frameworks */,
 				2B5A92D825331F440011F786 /* SwiftLoggerCommon in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,6 +65,7 @@
 			children = (
 				2B5A92C025331EBE0011F786 /* AppDelegate.swift */,
 				2B5A92C225331EBE0011F786 /* ContentView.swift */,
+				2B5A92DF25334D320011F786 /* LogCell.swift */,
 				2B5A92C425331EBE0011F786 /* Assets.xcassets */,
 				2B5A92C925331EBE0011F786 /* Main.storyboard */,
 				2B5A92CC25331EBE0011F786 /* Info.plist */,
@@ -97,6 +102,7 @@
 			packageProductDependencies = (
 				2B5A92D525331F440011F786 /* SwiftLoggerRouter */,
 				2B5A92D725331F440011F786 /* SwiftLoggerCommon */,
+				2B5A92DC253348B80011F786 /* Introspect */,
 			);
 			productName = SwiftLoggerUI;
 			productReference = 2B5A92BD25331EBE0011F786 /* SwiftLoggerUI.app */;
@@ -127,6 +133,7 @@
 			mainGroup = 2B5A92B425331EBE0011F786;
 			packageReferences = (
 				2B5A92D425331F440011F786 /* XCRemoteSwiftPackageReference "swiftloggerserver" */,
+				2B5A92DB253348B80011F786 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 2B5A92BE25331EBE0011F786 /* Products */;
 			projectDirPath = "";
@@ -157,6 +164,7 @@
 			files = (
 				2B5A92C325331EBE0011F786 /* ContentView.swift in Sources */,
 				2B5A92C125331EBE0011F786 /* AppDelegate.swift in Sources */,
+				2B5A92E025334D320011F786 /* LogCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +377,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		2B5A92DB253348B80011F786 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -381,6 +397,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2B5A92D425331F440011F786 /* XCRemoteSwiftPackageReference "swiftloggerserver" */;
 			productName = SwiftLoggerCommon;
+		};
+		2B5A92DC253348B80011F786 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B5A92DB253348B80011F786 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
