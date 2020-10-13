@@ -16,6 +16,7 @@
 		2B5A92D825331F440011F786 /* SwiftLoggerCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 2B5A92D725331F440011F786 /* SwiftLoggerCommon */; };
 		2B5A92DD253348B80011F786 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 2B5A92DC253348B80011F786 /* Introspect */; };
 		2B5A92E025334D320011F786 /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5A92DF25334D320011F786 /* LogCell.swift */; };
+		2B5FD11B2533846B0092D71E /* ServerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FD11A2533846B0092D71E /* ServerData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		2B5A92CC25331EBE0011F786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B5A92CD25331EBE0011F786 /* SwiftLoggerUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftLoggerUI.entitlements; sourceTree = "<group>"; };
 		2B5A92DF25334D320011F786 /* LogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCell.swift; sourceTree = "<group>"; };
+		2B5FD11A2533846B0092D71E /* ServerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				2B5A92C025331EBE0011F786 /* AppDelegate.swift */,
 				2B5A92C225331EBE0011F786 /* ContentView.swift */,
 				2B5A92DF25334D320011F786 /* LogCell.swift */,
+				2B5FD11A2533846B0092D71E /* ServerData.swift */,
 				2B5A92C425331EBE0011F786 /* Assets.xcassets */,
 				2B5A92C925331EBE0011F786 /* Main.storyboard */,
 				2B5A92CC25331EBE0011F786 /* Info.plist */,
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B5FD11B2533846B0092D71E /* ServerData.swift in Sources */,
 				2B5A92C325331EBE0011F786 /* ContentView.swift in Sources */,
 				2B5A92C125331EBE0011F786 /* AppDelegate.swift in Sources */,
 				2B5A92E025334D320011F786 /* LogCell.swift in Sources */,

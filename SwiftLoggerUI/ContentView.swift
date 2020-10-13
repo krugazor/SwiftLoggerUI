@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftLoggerCommon
+import Introspect
 
 class DoubleWrapper {
     let value: Double
@@ -30,24 +31,38 @@ struct Wrap: ViewModifier {
 }
 
 struct ContentView: View {
-    @State var connected = false
-    @State var items : [LoggerData]
+    @EnvironmentObject var server : ServerData
+    @State var scrollView : NSScrollView?
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
+                Spacer()
                 Circle()
-                    .fill(connected ? Color.green : Color.red)
+                    .fill(server.connection ? Color.green : Color.red)
                     .frame(width: 16, height: 16, alignment: .center)
-                Text("Hello, World!")
+                    .padding(4)
+                TextField("Server name", text: $server.name)
+                    .padding(4)
+                TextField("Server passcode(empty for default)", text: $server.passcode)
+                    .padding(4)
             }
             ScrollView(.vertical) {
-                ForEach(items) { item in
+                ForEach(server.logs) { item in
                     cellForLog(item)
+                        .padding()
                         .border(Color.secondary, width: 1)
                 }
             }
         }.frame(minWidth: 240, idealWidth: 600, maxWidth: 1200, minHeight: 240, idealHeight: 600, maxHeight: .infinity, alignment: .center)
+        .introspectScrollView { isv in
+            if self.scrollView == nil {
+                self.scrollView = isv
+                server.$logs.sink { _ in
+                    self.scrollView?.scroll(NSPoint(x: 0, y: Int.max))
+                }
+            }
+        }
     }
 }
 
@@ -55,11 +70,11 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static let image = NSImage(named: "screenshot-terminal")
     static var previews: some View {
-        ContentView(items:
+        ContentView().environmentObject(ServerData(name: "Test", logs:
                         [
                             LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logData: (image?.png!)!, dataExtension: "png"),
                             LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logText: "This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. "),
                         ]
-        )
+        ))
     }
 }

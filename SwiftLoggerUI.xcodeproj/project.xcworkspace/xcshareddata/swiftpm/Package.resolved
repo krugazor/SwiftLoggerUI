@@ -87,8 +87,8 @@
         "repositoryURL": "https://gitlab.krugazor.eu/logger/swiftloggerserver",
         "state": {
           "branch": null,
-          "revision": "6051453ec28483431492e083ac41439672cf348d",
-          "version": "1.0.1"
+          "revision": "1bd42f67870ce32d838434f98974c2367d6ab568",
+          "version": "1.0.3"
         }
       },
       {
