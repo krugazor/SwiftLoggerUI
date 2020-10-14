@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftLoggerCommon
 import Introspect
+import Combine
 
 class DoubleWrapper {
     let value: Double
@@ -34,6 +35,8 @@ struct ContentView: View {
     @EnvironmentObject var server : ServerData
     @State var scrollView : NSScrollView?
     
+    @State var sink : AnyCancellable? // for garbage collection
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -58,8 +61,8 @@ struct ContentView: View {
         .introspectScrollView { isv in
             if self.scrollView == nil {
                 self.scrollView = isv
-                server.$logs.sink { _ in
-                    self.scrollView?.scroll(NSPoint(x: 0, y: Int.max))
+                self.sink = server.$logs.sink { _ in
+                    self.scrollView?.contentView.scroll(NSPoint(x: 0, y: Int.max))
                 }
             }
         }
@@ -74,6 +77,7 @@ struct ContentView_Previews: PreviewProvider {
                         [
                             LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logData: (image?.png!)!, dataExtension: "png"),
                             LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logText: "This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. "),
+                            LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logData: "This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. ".data(using: .utf8)!, dataExtension: nil),
                         ]
         ))
     }
