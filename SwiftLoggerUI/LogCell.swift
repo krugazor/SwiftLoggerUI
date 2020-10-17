@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftLoggerCommon
+import AppKit // because swiftui can't give me text size :(
 
 func cellForLog(_ data: LoggerData) -> some View {
     Group {
@@ -114,6 +115,19 @@ struct DataLogCell: View {
         return output
     }
     
+    func maxWidth(_ width: CGFloat) -> Int {
+        var textSize = 8
+        var text = printableData(textSize)
+        while (text as NSString).size(withAttributes: [
+                                        .font: NSFont(name: "Courier", size: 12)
+        ]).width < width {
+            textSize += 8
+            text = printableData(textSize)
+        }
+        
+        return textSize - 8
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -132,9 +146,12 @@ struct DataLogCell: View {
                             nil
                     )
                     .frame(alignment: .leading)
-                Text(printableData(16))
-                    .font(.footnote)
-                    .lineLimit(nil)
+                GeometryReader { geom in
+                    let text = printableData(maxWidth(geom.size.width))
+                    Text(text)
+                        .font(Font.custom("Courier", size: 12))
+                        .lineLimit(nil)
+                }
                 Spacer()
             }
         }

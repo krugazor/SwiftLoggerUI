@@ -66,6 +66,11 @@ struct ContentView: View {
                 }
             }
         }
+        .onDisappear {
+            server.router = nil
+            server.connection = false
+            sink = nil
+        }
     }
 }
 

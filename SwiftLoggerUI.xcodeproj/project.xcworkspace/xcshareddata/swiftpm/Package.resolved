@@ -84,11 +84,11 @@
       },
       {
         "package": "SwiftLogger",
-        "repositoryURL": "https://gitlab.krugazor.eu/logger/swiftloggerserver",
+        "repositoryURL": "https://gitlab.krugazor.eu/logger/swiftloggerserver.git",
         "state": {
           "branch": null,
-          "revision": "1bd42f67870ce32d838434f98974c2367d6ab568",
-          "version": "1.0.3"
+          "revision": "917f1762dea752f21e298033bcf902039af1ad64",
+          "version": "1.0.4"
         }
       },
       {

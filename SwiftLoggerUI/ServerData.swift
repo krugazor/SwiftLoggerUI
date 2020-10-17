@@ -37,6 +37,10 @@ class ServerData : ObservableObject, LoggerRouterDelegate, PeerConnectionDelegat
         setupRouter()
     }
     
+    deinit {
+        self.router = nil
+    }
+    
     var writesToFile: Bool { return false }
     
     func logMessage(_ message: LoggerData) throws {
