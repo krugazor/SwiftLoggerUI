@@ -12,8 +12,11 @@
 		2B5A92C525331EBE0011F786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B5A92C425331EBE0011F786 /* Assets.xcassets */; };
 		2B5A92C825331EBE0011F786 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B5A92C725331EBE0011F786 /* Preview Assets.xcassets */; };
 		2B5A92CB25331EBE0011F786 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B5A92C925331EBE0011F786 /* Main.storyboard */; };
-		2B5A92D625331F440011F786 /* SwiftLoggerRouter in Frameworks */ = {isa = PBXBuildFile; productRef = 2B5A92D525331F440011F786 /* SwiftLoggerRouter */; };
-		2B5A92D825331F440011F786 /* SwiftLoggerCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 2B5A92D725331F440011F786 /* SwiftLoggerCommon */; };
+		2B5A92DD253348B80011F786 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 2B5A92DC253348B80011F786 /* Introspect */; };
+		2B5A92E025334D320011F786 /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5A92DF25334D320011F786 /* LogCell.swift */; };
+		2B5FD11B2533846B0092D71E /* ServerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FD11A2533846B0092D71E /* ServerData.swift */; };
+		2BED6A9A253AE42B004AA8D8 /* SwiftLoggerRouter in Frameworks */ = {isa = PBXBuildFile; productRef = 2BED6A99253AE42B004AA8D8 /* SwiftLoggerRouter */; };
+		2BED6A9C253AE42B004AA8D8 /* SwiftLoggerCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 2BED6A9B253AE42B004AA8D8 /* SwiftLoggerCommon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,8 @@
 		2B5A92CA25331EBE0011F786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B5A92CC25331EBE0011F786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B5A92CD25331EBE0011F786 /* SwiftLoggerUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftLoggerUI.entitlements; sourceTree = "<group>"; };
+		2B5A92DF25334D320011F786 /* LogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCell.swift; sourceTree = "<group>"; };
+		2B5FD11A2533846B0092D71E /* ServerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,8 +37,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B5A92D625331F440011F786 /* SwiftLoggerRouter in Frameworks */,
-				2B5A92D825331F440011F786 /* SwiftLoggerCommon in Frameworks */,
+				2B5A92DD253348B80011F786 /* Introspect in Frameworks */,
+				2BED6A9A253AE42B004AA8D8 /* SwiftLoggerRouter in Frameworks */,
+				2BED6A9C253AE42B004AA8D8 /* SwiftLoggerCommon in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +51,7 @@
 			children = (
 				2B5A92BF25331EBE0011F786 /* SwiftLoggerUI */,
 				2B5A92BE25331EBE0011F786 /* Products */,
+				2B5DCD0D2539FD48001B3566 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +68,8 @@
 			children = (
 				2B5A92C025331EBE0011F786 /* AppDelegate.swift */,
 				2B5A92C225331EBE0011F786 /* ContentView.swift */,
+				2B5A92DF25334D320011F786 /* LogCell.swift */,
+				2B5FD11A2533846B0092D71E /* ServerData.swift */,
 				2B5A92C425331EBE0011F786 /* Assets.xcassets */,
 				2B5A92C925331EBE0011F786 /* Main.storyboard */,
 				2B5A92CC25331EBE0011F786 /* Info.plist */,
@@ -78,6 +87,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		2B5DCD0D2539FD48001B3566 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -92,11 +108,14 @@
 			buildRules = (
 			);
 			dependencies = (
+				2B5DCD142539FD66001B3566 /* PBXTargetDependency */,
+				2B5DCD0C2539FD41001B3566 /* PBXTargetDependency */,
 			);
 			name = SwiftLoggerUI;
 			packageProductDependencies = (
-				2B5A92D525331F440011F786 /* SwiftLoggerRouter */,
-				2B5A92D725331F440011F786 /* SwiftLoggerCommon */,
+				2B5A92DC253348B80011F786 /* Introspect */,
+				2BED6A99253AE42B004AA8D8 /* SwiftLoggerRouter */,
+				2BED6A9B253AE42B004AA8D8 /* SwiftLoggerCommon */,
 			);
 			productName = SwiftLoggerUI;
 			productReference = 2B5A92BD25331EBE0011F786 /* SwiftLoggerUI.app */;
@@ -126,7 +145,8 @@
 			);
 			mainGroup = 2B5A92B425331EBE0011F786;
 			packageReferences = (
-				2B5A92D425331F440011F786 /* XCRemoteSwiftPackageReference "swiftloggerserver" */,
+				2B5A92DB253348B80011F786 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				2BED6A98253AE42B004AA8D8 /* XCRemoteSwiftPackageReference "swiftloggerserver" */,
 			);
 			productRefGroup = 2B5A92BE25331EBE0011F786 /* Products */;
 			projectDirPath = "";
@@ -155,12 +175,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B5FD11B2533846B0092D71E /* ServerData.swift in Sources */,
 				2B5A92C325331EBE0011F786 /* ContentView.swift in Sources */,
 				2B5A92C125331EBE0011F786 /* AppDelegate.swift in Sources */,
+				2B5A92E025334D320011F786 /* LogCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2B5DCD0C2539FD41001B3566 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 2B5DCD0B2539FD41001B3566 /* SwiftLoggerRouter */;
+		};
+		2B5DCD142539FD66001B3566 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 2B5DCD132539FD66001B3566 /* SwiftLoggerCommon */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2B5A92C925331EBE0011F786 /* Main.storyboard */ = {
@@ -295,10 +328,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SwiftLoggerUI/SwiftLoggerUI.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftLoggerUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 934567UKNP;
+				DEVELOPMENT_TEAM = 6HB7PWSP22;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftLoggerUI/Info.plist;
@@ -307,6 +341,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 0.9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.krugazor.SwiftLoggerUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -319,10 +354,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SwiftLoggerUI/SwiftLoggerUI.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftLoggerUI/Preview Content\"";
-				DEVELOPMENT_TEAM = 934567UKNP;
+				DEVELOPMENT_TEAM = 6HB7PWSP22;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SwiftLoggerUI/Info.plist;
@@ -331,6 +367,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 0.9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.krugazor.SwiftLoggerUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -361,25 +398,46 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2B5A92D425331F440011F786 /* XCRemoteSwiftPackageReference "swiftloggerserver" */ = {
+		2B5A92DB253348B80011F786 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://gitlab.krugazor.eu/logger/swiftloggerserver";
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 0.1.0;
+			};
+		};
+		2BED6A98253AE42B004AA8D8 /* XCRemoteSwiftPackageReference "swiftloggerserver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://gitlab.krugazor.eu/logger/swiftloggerserver.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2B5A92D525331F440011F786 /* SwiftLoggerRouter */ = {
+		2B5A92DC253348B80011F786 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2B5A92D425331F440011F786 /* XCRemoteSwiftPackageReference "swiftloggerserver" */;
+			package = 2B5A92DB253348B80011F786 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+		2B5DCD0B2539FD41001B3566 /* SwiftLoggerRouter */ = {
+			isa = XCSwiftPackageProductDependency;
 			productName = SwiftLoggerRouter;
 		};
-		2B5A92D725331F440011F786 /* SwiftLoggerCommon */ = {
+		2B5DCD132539FD66001B3566 /* SwiftLoggerCommon */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2B5A92D425331F440011F786 /* XCRemoteSwiftPackageReference "swiftloggerserver" */;
+			productName = SwiftLoggerCommon;
+		};
+		2BED6A99253AE42B004AA8D8 /* SwiftLoggerRouter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2BED6A98253AE42B004AA8D8 /* XCRemoteSwiftPackageReference "swiftloggerserver" */;
+			productName = SwiftLoggerRouter;
+		};
+		2BED6A9B253AE42B004AA8D8 /* SwiftLoggerCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2BED6A98253AE42B004AA8D8 /* XCRemoteSwiftPackageReference "swiftloggerserver" */;
 			productName = SwiftLoggerCommon;
 		};
 /* End XCSwiftPackageProductDependency section */
