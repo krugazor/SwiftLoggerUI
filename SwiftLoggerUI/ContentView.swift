@@ -31,10 +31,38 @@ struct Wrap: ViewModifier {
     }
 }
 
+enum LoggerTypeFilter : String, CaseIterable, Identifiable {
+    case ALL
+    case DEBUG
+    case INFO
+    case WARNING
+    case ERROR
+    
+    var id: String { self.rawValue }
+    
+    func matches(_ ldt: LoggerData.LoggerType) -> Bool {
+        switch self {
+        case .ALL:
+            return true
+        case .DEBUG:
+            return true
+        case .INFO:
+            if ldt != .DEBUG { return true }
+            else { return false }
+        case .WARNING:
+            if ldt == .WARNING || ldt == .ERROR { return true }
+            else { return false }
+        case .ERROR:
+            if ldt == .ERROR { return true }
+            else { return false }
+        }
+    }
+}
+
 struct ContentView: View {
     @EnvironmentObject var server : ServerData
     @State var scrollView : NSScrollView?
-    
+    @State var selectedLevel = LoggerTypeFilter.ALL
     @State var sink : AnyCancellable? // for garbage collection
     
     var body: some View {
@@ -50,11 +78,24 @@ struct ContentView: View {
                 TextField("Server passcode(empty for default)", text: $server.passcode)
                     .padding(4)
             }
+            HStack {
+                Picker("Level", selection: $selectedLevel) {
+                    Text("All").tag(LoggerTypeFilter.ALL)
+                    Text("Debug").tag(LoggerTypeFilter.DEBUG)
+                    Text("Info").tag(LoggerTypeFilter.INFO)
+                    Text("Warning").tag(LoggerTypeFilter.WARNING)
+                    Text("Error").tag(LoggerTypeFilter.ERROR)
+                }
+                Text("and above")
+                Spacer()
+            }
             ScrollView(.vertical) {
                 ForEach(server.logs) { item in
-                    cellForLog(item)
-                        .padding()
-                        .border(Color.secondary, width: 1)
+                    if selectedLevel.matches(item.logType) {
+                        cellForLog(item)
+                            .padding()
+                            .border(Color.secondary, width: 1)
+                    }
                 }
             }
         }.frame(minWidth: 240, idealWidth: 600, maxWidth: 1200, minHeight: 240, idealHeight: 600, maxHeight: .infinity, alignment: .center)
@@ -79,11 +120,11 @@ struct ContentView_Previews: PreviewProvider {
     static let image = NSImage(named: "screenshot-terminal")
     static var previews: some View {
         ContentView().environmentObject(ServerData(name: "Test", logs:
-                        [
-                            LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logData: (image?.png!)!, dataExtension: "png"),
-                            LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logText: "This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. "),
-                            LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logData: "This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. ".data(using: .utf8)!, dataExtension: nil),
-                        ]
+                                                    [
+                                                        LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logData: (image?.png!)!, dataExtension: "png"),
+                                                        LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logText: "This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. "),
+                                                        LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logData: "This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. ".data(using: .utf8)!, dataExtension: nil),
+                                                    ]
         ))
     }
 }
