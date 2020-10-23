@@ -11,7 +11,8 @@ import SwiftUI
 struct SwiftLoggeriOSApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let sdata = ServerData(name: "Test")
+            ContentView().environmentObject(sdata)
         }
     }
 }

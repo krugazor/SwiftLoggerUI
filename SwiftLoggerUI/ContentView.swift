@@ -61,7 +61,11 @@ enum LoggerTypeFilter : String, CaseIterable, Identifiable {
 
 struct ContentView: View {
     @EnvironmentObject var server : ServerData
+    #if os(macOS)
     @State var scrollView : NSScrollView?
+    #else
+    @State var scrollView : UIScrollView?
+    #endif
     @State var selectedLevel = LoggerTypeFilter.ALL
     @State var sink : AnyCancellable? // for garbage collection
     
@@ -103,7 +107,11 @@ struct ContentView: View {
             if self.scrollView == nil {
                 self.scrollView = isv
                 self.sink = server.$logs.sink { _ in
+                    #if os(macOS)
                     self.scrollView?.contentView.scroll(NSPoint(x: 0, y: Int.max))
+                    #else
+                    self.scrollView?.scrollsToBottom(animated: true)
+                    #endif
                 }
             }
         }

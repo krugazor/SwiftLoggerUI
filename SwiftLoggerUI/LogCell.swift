@@ -7,8 +7,13 @@
 
 import SwiftUI
 import SwiftLoggerCommon
+#if os(macOS)
 import AppKit // because swiftui can't give me text size :(
-
+#else
+import UIKit
+typealias NSImage = UIImage
+typealias NSFont = UIFont
+#endif
 func cellForLog(_ data: LoggerData) -> some View {
     Group {
         if data.logText != nil {

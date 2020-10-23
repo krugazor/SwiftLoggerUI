@@ -87,8 +87,8 @@
         "repositoryURL": "https://gitlab.krugazor.eu/logger/swiftloggerserver.git",
         "state": {
           "branch": null,
-          "revision": "917f1762dea752f21e298033bcf902039af1ad64",
-          "version": "1.0.4"
+          "revision": "fe15c49f2a3d9a40be94c1fcf2ffedd0124f63bd",
+          "version": "1.1.0"
         }
       },
       {
@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect.git",
         "state": {
           "branch": null,
-          "revision": "de5c32c15ae169cfcb27397ffb2734dcd0e1e6d5",
-          "version": "0.1.0"
+          "revision": "f1ec9da347a7fbe53c520d35434f6c2295650bd5",
+          "version": "0.1.1"
         }
       },
       {
