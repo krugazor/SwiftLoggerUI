@@ -90,6 +90,7 @@ struct ContentView: View {
                     Text("Warning").tag(LoggerTypeFilter.WARNING)
                     Text("Error").tag(LoggerTypeFilter.ERROR)
                 }
+                .frame(minWidth: 80, idealWidth: 80, maxWidth: 200, minHeight: 40, idealHeight: 80, maxHeight: 200, alignment: .center)
                 Text("and above")
                 Spacer()
             }
