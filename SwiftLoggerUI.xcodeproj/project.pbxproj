@@ -22,10 +22,11 @@
 		2B5A92DD253348B80011F786 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 2B5A92DC253348B80011F786 /* Introspect */; };
 		2B5A92E025334D320011F786 /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5A92DF25334D320011F786 /* LogCell.swift */; };
 		2B5FD11B2533846B0092D71E /* ServerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FD11A2533846B0092D71E /* ServerData.swift */; };
-		2BFB9C132543743600F18112 /* SwiftLoggerRouter in Frameworks */ = {isa = PBXBuildFile; productRef = 2BFB9C122543743600F18112 /* SwiftLoggerRouter */; };
-		2BFB9C152543743600F18112 /* SwiftLoggerCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 2BFB9C142543743600F18112 /* SwiftLoggerCommon */; };
-		2BFB9C1D2543749400F18112 /* SwiftLoggerCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 2BFB9C1C2543749400F18112 /* SwiftLoggerCommon */; };
-		2BFB9C1F2543749400F18112 /* SwiftLoggerRouterNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 2BFB9C1E2543749400F18112 /* SwiftLoggerRouterNetwork */; };
+		2B622882254C90960044B65C /* SwiftLoggerCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 2B622881254C90960044B65C /* SwiftLoggerCommon */; };
+		2B622886254C90960044B65C /* SwiftLoggerClient in Frameworks */ = {isa = PBXBuildFile; productRef = 2B622885254C90960044B65C /* SwiftLoggerClient */; };
+		2B62288C254C90B80044B65C /* SwiftLoggerCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 2B62288B254C90B80044B65C /* SwiftLoggerCommon */; };
+		2B62288E254C90B80044B65C /* SwiftLoggerRouterNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 2B62288D254C90B80044B65C /* SwiftLoggerRouterNetwork */; };
+		2B62289A254C91220044B65C /* SwiftLoggerRouter in Frameworks */ = {isa = PBXBuildFile; productRef = 2B622899254C91220044B65C /* SwiftLoggerRouter */; };
 		2BFB9C27254375E500F18112 /* Aliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFB9C26254375E500F18112 /* Aliases.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +55,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B2E25B82542B1E500CC23E6 /* Introspect in Frameworks */,
-				2BFB9C1F2543749400F18112 /* SwiftLoggerRouterNetwork in Frameworks */,
-				2BFB9C1D2543749400F18112 /* SwiftLoggerCommon in Frameworks */,
+				2B62288E254C90B80044B65C /* SwiftLoggerRouterNetwork in Frameworks */,
+				2B62288C254C90B80044B65C /* SwiftLoggerCommon in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,8 +65,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B5A92DD253348B80011F786 /* Introspect in Frameworks */,
-				2BFB9C132543743600F18112 /* SwiftLoggerRouter in Frameworks */,
-				2BFB9C152543743600F18112 /* SwiftLoggerCommon in Frameworks */,
+				2B622886254C90960044B65C /* SwiftLoggerClient in Frameworks */,
+				2B622882254C90960044B65C /* SwiftLoggerCommon in Frameworks */,
+				2B62289A254C91220044B65C /* SwiftLoggerRouter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,8 +165,8 @@
 			name = SwiftLoggeriOS;
 			packageProductDependencies = (
 				2B2E25B72542B1E500CC23E6 /* Introspect */,
-				2BFB9C1C2543749400F18112 /* SwiftLoggerCommon */,
-				2BFB9C1E2543749400F18112 /* SwiftLoggerRouterNetwork */,
+				2B62288B254C90B80044B65C /* SwiftLoggerCommon */,
+				2B62288D254C90B80044B65C /* SwiftLoggerRouterNetwork */,
 			);
 			productName = SwiftLoggeriOS;
 			productReference = 2B2E25952542B06900CC23E6 /* SwiftLoggeriOS.app */;
@@ -181,14 +183,16 @@
 			buildRules = (
 			);
 			dependencies = (
+				2B622898254C911A0044B65C /* PBXTargetDependency */,
+				2B62288A254C90A90044B65C /* PBXTargetDependency */,
 				2B5DCD142539FD66001B3566 /* PBXTargetDependency */,
-				2B5DCD0C2539FD41001B3566 /* PBXTargetDependency */,
 			);
 			name = SwiftLoggerUI;
 			packageProductDependencies = (
 				2B5A92DC253348B80011F786 /* Introspect */,
-				2BFB9C122543743600F18112 /* SwiftLoggerRouter */,
-				2BFB9C142543743600F18112 /* SwiftLoggerCommon */,
+				2B622881254C90960044B65C /* SwiftLoggerCommon */,
+				2B622885254C90960044B65C /* SwiftLoggerClient */,
+				2B622899254C91220044B65C /* SwiftLoggerRouter */,
 			);
 			productName = SwiftLoggerUI;
 			productReference = 2B5A92BD25331EBE0011F786 /* SwiftLoggerUI.app */;
@@ -222,7 +226,7 @@
 			mainGroup = 2B5A92B425331EBE0011F786;
 			packageReferences = (
 				2B5A92DB253348B80011F786 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
-				2BFB9C112543743600F18112 /* XCRemoteSwiftPackageReference "swiftloggerserver" */,
+				2B622880254C90960044B65C /* XCRemoteSwiftPackageReference "SwiftLoggerServer" */,
 			);
 			productRefGroup = 2B5A92BE25331EBE0011F786 /* Products */;
 			projectDirPath = "";
@@ -287,13 +291,17 @@
 			isa = PBXTargetDependency;
 			productRef = 2B2E25B12542B1DE00CC23E6 /* Introspect */;
 		};
-		2B5DCD0C2539FD41001B3566 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			productRef = 2B5DCD0B2539FD41001B3566 /* SwiftLoggerRouter */;
-		};
 		2B5DCD142539FD66001B3566 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 2B5DCD132539FD66001B3566 /* SwiftLoggerCommon */;
+		};
+		2B62288A254C90A90044B65C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 2B622889254C90A90044B65C /* Introspect */;
+		};
+		2B622898254C911A0044B65C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 2B622897254C911A0044B65C /* SwiftLoggerRouter */;
 		};
 		2BFB9C192543748D00F18112 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -572,12 +580,12 @@
 				minimumVersion = 0.1.0;
 			};
 		};
-		2BFB9C112543743600F18112 /* XCRemoteSwiftPackageReference "swiftloggerserver" */ = {
+		2B622880254C90960044B65C /* XCRemoteSwiftPackageReference "SwiftLoggerServer" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://gitlab.krugazor.eu/logger/swiftloggerserver.git";
+			repositoryURL = "https://github.com/krugazor/SwiftLoggerServer";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
+				minimumVersion = 1.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -598,23 +606,44 @@
 			package = 2B5A92DB253348B80011F786 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-		2B5DCD0B2539FD41001B3566 /* SwiftLoggerRouter */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SwiftLoggerRouter;
-		};
 		2B5DCD132539FD66001B3566 /* SwiftLoggerCommon */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftLoggerCommon;
 		};
-		2BFB9C122543743600F18112 /* SwiftLoggerRouter */ = {
+		2B622881254C90960044B65C /* SwiftLoggerCommon */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2BFB9C112543743600F18112 /* XCRemoteSwiftPackageReference "swiftloggerserver" */;
+			package = 2B622880254C90960044B65C /* XCRemoteSwiftPackageReference "SwiftLoggerServer" */;
+			productName = SwiftLoggerCommon;
+		};
+		2B622885254C90960044B65C /* SwiftLoggerClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B622880254C90960044B65C /* XCRemoteSwiftPackageReference "SwiftLoggerServer" */;
+			productName = SwiftLoggerClient;
+		};
+		2B622889254C90A90044B65C /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B5A92DB253348B80011F786 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+		2B62288B254C90B80044B65C /* SwiftLoggerCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B622880254C90960044B65C /* XCRemoteSwiftPackageReference "SwiftLoggerServer" */;
+			productName = SwiftLoggerCommon;
+		};
+		2B62288D254C90B80044B65C /* SwiftLoggerRouterNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B622880254C90960044B65C /* XCRemoteSwiftPackageReference "SwiftLoggerServer" */;
+			productName = SwiftLoggerRouterNetwork;
+		};
+		2B622897254C911A0044B65C /* SwiftLoggerRouter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B622880254C90960044B65C /* XCRemoteSwiftPackageReference "SwiftLoggerServer" */;
 			productName = SwiftLoggerRouter;
 		};
-		2BFB9C142543743600F18112 /* SwiftLoggerCommon */ = {
+		2B622899254C91220044B65C /* SwiftLoggerRouter */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2BFB9C112543743600F18112 /* XCRemoteSwiftPackageReference "swiftloggerserver" */;
-			productName = SwiftLoggerCommon;
+			package = 2B622880254C90960044B65C /* XCRemoteSwiftPackageReference "SwiftLoggerServer" */;
+			productName = SwiftLoggerRouter;
 		};
 		2BFB9C182543748D00F18112 /* SwiftLoggerCommon */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -622,16 +651,6 @@
 			productName = SwiftLoggerCommon;
 		};
 		2BFB9C1A2543748D00F18112 /* SwiftLoggerRouterNetwork */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2BFB9C112543743600F18112 /* XCRemoteSwiftPackageReference "swiftloggerserver" */;
-			productName = SwiftLoggerRouterNetwork;
-		};
-		2BFB9C1C2543749400F18112 /* SwiftLoggerCommon */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2BFB9C112543743600F18112 /* XCRemoteSwiftPackageReference "swiftloggerserver" */;
-			productName = SwiftLoggerCommon;
-		};
-		2BFB9C1E2543749400F18112 /* SwiftLoggerRouterNetwork */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2BFB9C112543743600F18112 /* XCRemoteSwiftPackageReference "swiftloggerserver" */;
 			productName = SwiftLoggerRouterNetwork;

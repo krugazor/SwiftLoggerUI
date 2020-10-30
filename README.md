@@ -1,10 +1,11 @@
 ![](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)
 ![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
+![iOS](https://img.shields.io/badge/os-iOS-green.svg?style=flat)
 ![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat)
 
 # SwiftLoggerUI
 
-Super basic UI to display logs sent using [SwiftLogger](https://gitlab.krugazor.eu/logger/swiftloggerserver)
+Super basic UI to display logs sent using [SwiftLogger](https://github.com/krugazor/SwiftLoggerServer)
 
 ## "Manual"
 
