@@ -61,7 +61,12 @@ enum LoggerTypeFilter : String, CaseIterable, Identifiable {
 
 struct ContentView: View {
     @EnvironmentObject var server : ServerData
+    #if os(macOS)
     @State var scrollView : NSScrollView?
+    #else
+    @State var scrollView : UIScrollView?
+    #endif
+    @State var showLevels = false
     @State var selectedLevel = LoggerTypeFilter.ALL
     @State var sink : AnyCancellable? // for garbage collection
     
@@ -74,20 +79,27 @@ struct ContentView: View {
                     .frame(width: 16, height: 16, alignment: .center)
                     .padding(4)
                 TextField("Server name", text: $server.name)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(4)
                 TextField("Server passcode(empty for default)", text: $server.passcode)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(4)
             }
-            HStack {
-                Picker("Level", selection: $selectedLevel) {
-                    Text("All").tag(LoggerTypeFilter.ALL)
-                    Text("Debug").tag(LoggerTypeFilter.DEBUG)
-                    Text("Info").tag(LoggerTypeFilter.INFO)
-                    Text("Warning").tag(LoggerTypeFilter.WARNING)
-                    Text("Error").tag(LoggerTypeFilter.ERROR)
+            Button("Filter") {
+                showLevels = !showLevels
+            }
+            if showLevels {
+                HStack {
+                    Picker("Level", selection: $selectedLevel) {
+                        Text("All").tag(LoggerTypeFilter.ALL)
+                        Text("Debug").tag(LoggerTypeFilter.DEBUG)
+                        Text("Info").tag(LoggerTypeFilter.INFO)
+                        Text("Warning").tag(LoggerTypeFilter.WARNING)
+                        Text("Error").tag(LoggerTypeFilter.ERROR)
+                    }
+                    .frame(minWidth: 80, idealWidth: 80, maxWidth: 300, minHeight: 40, idealHeight: 80, maxHeight: 300, alignment: .center)
+                    Text("and above")
                 }
-                Text("and above")
-                Spacer()
             }
             ScrollView(.vertical) {
                 ForEach(server.logs) { item in
@@ -103,7 +115,11 @@ struct ContentView: View {
             if self.scrollView == nil {
                 self.scrollView = isv
                 self.sink = server.$logs.sink { _ in
+                    #if os(macOS)
                     self.scrollView?.contentView.scroll(NSPoint(x: 0, y: Int.max))
+                    #else
+                    self.scrollView?.scrollsToBottom(animated: true)
+                    #endif
                 }
             }
         }
