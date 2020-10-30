@@ -340,6 +340,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.krugazor.SwiftLoggeriOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -363,6 +364,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.krugazor.SwiftLoggeriOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -506,7 +508,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.9.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.krugazor.SwiftLoggerUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -532,7 +534,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 0.9.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.krugazor.SwiftLoggerUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -647,12 +649,10 @@
 		};
 		2BFB9C182543748D00F18112 /* SwiftLoggerCommon */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2BFB9C112543743600F18112 /* XCRemoteSwiftPackageReference "swiftloggerserver" */;
 			productName = SwiftLoggerCommon;
 		};
 		2BFB9C1A2543748D00F18112 /* SwiftLoggerRouterNetwork */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2BFB9C112543743600F18112 /* XCRemoteSwiftPackageReference "swiftloggerserver" */;
 			productName = SwiftLoggerRouterNetwork;
 		};
 /* End XCSwiftPackageProductDependency section */
