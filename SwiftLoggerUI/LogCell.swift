@@ -7,8 +7,13 @@
 
 import SwiftUI
 import SwiftLoggerCommon
+#if os(macOS)
 import AppKit // because swiftui can't give me text size :(
-
+#else
+import UIKit
+typealias NSImage = UIImage
+typealias NSFont = UIFont
+#endif
 func cellForLog(_ data: LoggerData) -> some View {
     Group {
         if data.logText != nil {
@@ -32,7 +37,7 @@ struct TextLogCell: View {
             HStack {
                 Text(data.function)
                     .bold()
-                Text(data.sourceFile + ":\(data.lineNumber)")
+                Text((data.sourceFile.lastPathComponent ?? "file?") + ":\(data.lineNumber)")
                     .italic()
                     .truncationMode(.head)
             }
@@ -44,10 +49,13 @@ struct TextLogCell: View {
                             data.logType == .INFO ? .yellow :
                             nil
                     )
+                    .allowsTightening(true)
+                    .minimumScaleFactor(0.5)
                     .frame(alignment: .leading)
                 Text(data.logText!)
                     .font(.footnote)
-                    .lineLimit(nil)   
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(nil)
                 Spacer()
             }
         }
@@ -62,7 +70,7 @@ struct ImageLogCell: View {
             HStack {
                 Text(data.function)
                     .bold()
-                Text(data.sourceFile + ":\(data.lineNumber)")
+                Text((data.sourceFile.lastPathComponent ?? "file?") + ":\(data.lineNumber)")
                     .italic()
                     .truncationMode(.head)
             }
@@ -73,12 +81,14 @@ struct ImageLogCell: View {
                             data.logType == .WARNING ? .orange :
                             data.logType == .INFO ? .yellow :
                             nil)
-                    .frame(alignment: .leading)
+                    .allowsTightening(true)
+                    .minimumScaleFactor(0.5)
+                  .frame(alignment: .leading)
                 Spacer()
                 Image(nsImage: NSImage(data: data.logData!)!)
                     .resizable()
                     .scaledToFit()
-                    .frame(minWidth: 240, idealWidth: 240, maxWidth: 800, minHeight: 240, idealHeight: 240, maxHeight: 800, alignment: .center)
+                    .frame(minWidth: 200, idealWidth: 240, maxWidth: 800, minHeight: 240, idealHeight: 240, maxHeight: 800, alignment: .center)
                     .onTapGesture(count: 2, perform: {
                         print("tapped")
                     })
@@ -133,7 +143,7 @@ struct DataLogCell: View {
             HStack {
                 Text(data.function)
                     .bold()
-                Text(data.sourceFile + ":\(data.lineNumber)")
+                Text((data.sourceFile.lastPathComponent ?? "file?") + ":\(data.lineNumber)")
                     .italic()
                     .truncationMode(.head)
             }
@@ -145,12 +155,16 @@ struct DataLogCell: View {
                             data.logType == .INFO ? .yellow :
                             nil
                     )
-                    .frame(alignment: .leading)
+                    .allowsTightening(true)
+                    .minimumScaleFactor(0.5)
+                   .frame(alignment: .leading)
                 GeometryReader { geom in
                     let text = printableData(maxWidth(geom.size.width))
                     Text(text)
                         .font(Font.custom("Courier", size: 12))
-                        .lineLimit(nil)
+                        .allowsTightening(true)
+                        .minimumScaleFactor(0.5)
+                      .lineLimit(nil)
                 }
                 Spacer()
             }
@@ -168,5 +182,11 @@ struct LogCell_Previews: PreviewProvider {
             cellForLog(LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logData: (image?.png!)!, dataExtension: "png"))
             cellForLog(LoggerData(appName: "Test", logType: .INFO, logTarget: .both, sourceFile: #file, lineNumber: #line, function: #function, logData: "This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. This is a test log. ".data(using: .utf8)!, dataExtension: nil))
         }
+    }
+}
+
+extension String {
+    var lastPathComponent: String? {
+        return URL(string: self)?.lastPathComponent
     }
 }
